@@ -4,6 +4,7 @@
     "node": "12.4.0"
   },
   "scripts": {
+    "dev" : "foreman start -f Procfile.dev",
     "build": "cd client && npm install && npm run build && cd ..",
     "deploy": "cp -a client/build/. public/",
     "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
