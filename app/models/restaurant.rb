@@ -23,18 +23,23 @@ class Restaurant < ApplicationRecord
   belongs_to :cuisine,  foreign_key: :cuisine_id
 
   validates_presence_of :name
-  validates_length_of :name, minimum:1, maximum: 255, message: 'Restaurant name too long(>255)'
+  validates_length_of :name, minimum: 1, maximum: 255,
+                             message: 'Restaurant name should be between 1 to 255'
 
   validates_presence_of :address
   validates_length_of :address, maximum: 255, message: 'address too long(>255)'
 
-  validates :foodcard, inclusion: { :in => [true,false]}
-  validates_presence_of :deliverytime
+  validates :foodcard, inclusion: { in: [true, false] }
+  
+  validates_numericality_of :deliverytime, only_integer: true,
+                                           greater_than_or_equal_to: 0,
+                                           less_than_or_equal_to: 180,
+                                           allow_nil: true
 
   validates_numericality_of :rating,  only_integer: true,
-                            greater_than_or_equal_to: 0,
-                            less_than_or_equal_to: 3,
-                            message: 'Rating not in range'
+                                      greater_than_or_equal_to: 0,
+                                      less_than_or_equal_to: 3,
+                                      message: 'Rating not in range'
 
   validates_numericality_of :latitude,
                             greater_than_or_equal_to: -90,

@@ -32,10 +32,16 @@ RSpec.describe Restaurant, type: :model do
   describe 'validations' do
     it { should validate_presence_of(:name) }
     it { should validate_inclusion_of(:foodcard).in_array([true, false]) }
-    it { should validate_presence_of(:deliverytime) }
 
-    it { should validate_length_of(:name).is_at_most(255).with_message('Restaurant name too long(>255)') }
+    it { should validate_length_of(:name).is_at_most(255).with_message('Restaurant name should be between 1 to 255') }
     it { should validate_length_of(:address).is_at_most(255).with_message('address too long(>255)') }
+
+    it 'should validate max delivery time ' do
+      should validate_numericality_of(:deliverytime)
+                 .is_less_than_or_equal_to(180)
+                 .is_greater_than_or_equal_to(0)
+    end
+
 
     it 'should validate location' do
       should validate_numericality_of(:latitude)
