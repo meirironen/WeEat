@@ -21,6 +21,7 @@
 
 class Restaurant < ApplicationRecord
   belongs_to :cuisine,  foreign_key: :cuisine_id
+  has_many :reviews, -> { order(updated_at: :desc) }
 
   validates_presence_of :name
   validates_length_of :name, minimum: 1, maximum: 255,

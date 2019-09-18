@@ -29,7 +29,7 @@ RSpec.describe 'restaurants API', type: :request do
     before { get "/api/v1/restaurants/#{restaurant_id}" }
 
     context 'when the record exists' do
-      it 'returns the article' do
+      it 'returns the restaurant' do
         expect(json).not_to be_empty
         expect(json['id']).to eq(restaurant_id)
       end
