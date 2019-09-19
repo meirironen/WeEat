@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: reviews
+#
+#  id            :bigint           not null, primary key
+#  comment       :text
+#  rating        :integer          not null
+#  reviewer      :string(50)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  restaurant_id :integer
+#
+# Indexes
+#
+#  index_reviews_on_restaurant_id  (restaurant_id)
+#
+
 require 'rails_helper'
 
 RSpec.describe Review, type: :model do

@@ -51,4 +51,13 @@ class Restaurant < ApplicationRecord
                             greater_than_or_equal_to: -90,
                             less_than_or_equal_to: 90,
                             message: 'longitude not in range'
+
+  def calc_average_rating
+    rating_sum = reviews.reduce(0) { |sum, review| sum + review.rating }
+    average_rating = (rating_sum.to_f / reviews.size).round
+
+    self.rating = average_rating
+    save
+  end
+
 end

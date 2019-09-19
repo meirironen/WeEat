@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_143703) do
     t.decimal "longitude", precision: 10, scale: 6
     t.boolean "foodcard", default: true
     t.integer "deliverytime", default: 30
-    t.integer "rating", default: 0
+    t.integer "rating", default: 1
     t.integer "cuisine_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
