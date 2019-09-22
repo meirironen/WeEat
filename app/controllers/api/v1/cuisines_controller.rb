@@ -10,13 +10,13 @@ module Api::V1
 
     # GET /cuisines/1
     def show
-      @cuisine = set_cuisines
+      @cuisine = get_cuisine
       json_response(@cuisine)
     end
 
     private
     # Use callbacks to share common setup or constraints between actions.
-    def set_cuisines
+    def get_cuisine
       @cuisine = Cuisine.find(params[:id])
     end
 

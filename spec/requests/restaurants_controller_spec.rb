@@ -104,11 +104,11 @@ RSpec.describe 'restaurants API', type: :request do
       before { put "/api/v1/restaurants/#{restaurant_id}", params: valid_attributes }
 
       it 'updates the record' do
-        expect(response.body).to be_empty
+        expect(json['name']).to eq('Updated Restaurant Name')
       end
 
-      it 'returns status code 204' do
-        expect(response).to have_http_status(204)
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
       end
     end
   end
@@ -118,7 +118,7 @@ RSpec.describe 'restaurants API', type: :request do
     before { delete "/api/v1/restaurants/#{restaurant_id}" }
 
     it 'returns status code 204' do
-      expect(response).to have_http_status(204)
+      expect(response).to have_http_status(200)
     end
   end
 end
