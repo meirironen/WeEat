@@ -24,12 +24,13 @@ module Api::V1
     # PATCH/PUT /reviews/1
     def update
       @review.update(review_params)
-      head :no_content
+      json_response(@review)
     end
 
     # DELETE /reviews/1
     def destroy
       @review.destroy
+      json_response(@review)
     end
 
     private

@@ -99,11 +99,11 @@ RSpec.describe 'Reviews API', type: :request do
       before { put "/api/v1/reviews/#{review_id}", params: valid_attributes }
 
       it 'updates the record' do
-        expect(response.body).to be_empty
+        expect(json['rating']).to eq(3)
       end
 
-      it 'returns status code 204' do
-        expect(response).to have_http_status(:no_content)
+      it 'returns status code 200' do
+        expect(response).to have_http_status(:ok)
       end
     end
   end
@@ -113,7 +113,7 @@ RSpec.describe 'Reviews API', type: :request do
     before { delete "/api/v1/reviews/#{review_id}" }
 
     it 'returns status code 204' do
-      expect(response).to have_http_status(:no_content)
+      expect(response).to have_http_status(:ok)
     end
   end
 
