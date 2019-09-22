@@ -17,18 +17,19 @@ module Api::V1
     # POST /restaurants
     def create
       @restaurant = Restaurant.create!(restaurant_params)
-      json_response(@restaurant,:created)
+      json_response(@restaurant, :created)
     end
 
     # PATCH/PUT /restaurants/1
     def update
       @restaurant.update(restaurant_params)
-      head :no_content
+      json_response(@restaurant)
     end
 
     # DELETE /restaurants/1
     def destroy
       @restaurant.destroy
+      json_response(@restaurant)
     end
 
     private
