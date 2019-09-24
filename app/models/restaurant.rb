@@ -20,7 +20,7 @@
 #
 
 class Restaurant < ApplicationRecord
-  belongs_to :cuisine,  foreign_key: :cuisine_id
+  belongs_to :cuisine
   has_many :reviews, -> { order(updated_at: :desc) }
 
   validates_presence_of :name
@@ -55,8 +55,11 @@ class Restaurant < ApplicationRecord
   def calc_average_rating
     rating_sum = reviews.reduce(0) { |sum, review| sum + review.rating }
     average_rating = (rating_sum.to_f / reviews.size).round
+    save_average_rating(average_rating)
+  end
 
-    self.rating = average_rating
+  def save_average_rating(new_rating)
+    self.rating = new_rating
     save
   end
 
