@@ -20,7 +20,8 @@
 #
 
 class Restaurant < ApplicationRecord
-  belongs_to :cuisine,  foreign_key: :cuisine_id
+  belongs_to :cuisine
+  has_many :reviews, -> { order(updated_at: :desc) }
 
   validates_presence_of :name
   validates_length_of :name, minimum: 1, maximum: 255,
@@ -50,4 +51,16 @@ class Restaurant < ApplicationRecord
                             greater_than_or_equal_to: -90,
                             less_than_or_equal_to: 90,
                             message: 'longitude not in range'
+
+  def calc_average_rating
+    rating_sum = reviews.reduce(0) { |sum, review| sum + review.rating }
+    average_rating = (rating_sum.to_f / reviews.size).round
+    save_average_rating(average_rating)
+  end
+
+  def save_average_rating(new_rating)
+    self.rating = new_rating
+    save
+  end
+
 end
