@@ -1,0 +1,6 @@
+@import "./scss/grid";
+
+#root {
+  @extend %column;
+  min-height: 100vh;
+}
