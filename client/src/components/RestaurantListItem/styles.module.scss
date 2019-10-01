@@ -1,0 +1,29 @@
+@import "../../scss/layout", "../../scss/font-size", "../../scss/text";
+
+.RestaurantListItem {
+  @extend %row;
+  padding: calculateRem(28px, "em") calculateRem(17px, "em");
+  background-color: #fafafa;
+  border-radius: 5px;
+  border: solid 1px #eeeeee;
+  margin-bottom: 8px;
+
+  .Cuisine {
+    @extend %column;
+    @include fontSize(42px, "em");
+    flex-grow: 0;
+    justify-content: center;
+    font-family: "ef_cuisinesregular";
+    color: #f54343;
+    height: calculateRem(42px);
+  }
+  .Details {
+    padding: 0 calculateRem(17px, "em");
+
+    .Name {
+      @include fontSize(20px, "em");
+      @include semibold-text();
+      margin-bottom: 4px;
+    }
+  }
+}

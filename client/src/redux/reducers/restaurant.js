@@ -1,15 +1,15 @@
 import {  FETCH_RESTAURANTS, RESET } from '../action-types'
 
-const INITIAL_STATE = { restaurants : [], doneLoading: null, currentRestaurantId: undefined };
+const INITIAL_STATE = { restaurants : [], currentRestaurantId: undefined };
 
 export default function(state = INITIAL_STATE, action) {
     switch (action.type) {
         case RESET:{
-            return {...state, doneLoading: false}
+            return { ...state }
         }
 
         case FETCH_RESTAURANTS:{
-            return {...state, restaurants: action.payload, doneLoading: true};
+            return { ...state, restaurants: action.payload };
         }
 
         default:

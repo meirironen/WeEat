@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
-import "./scss/global.scss";
+import "./scss/globals.scss"
 import Routing from "./routing/routing";
 import * as serviceWorker from "./serviceWorker";
 

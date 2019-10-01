@@ -1,0 +1,5 @@
+@mixin background($horizontal: center, $vertical: center) {
+  background-position: $horizontal $vertical;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

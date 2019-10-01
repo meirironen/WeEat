@@ -1,6 +1,6 @@
 import {FETCH_CUISINES, RESET} from '../action-types'
 
-const INITIAL_STATE = { cuisines : {} , doneLoading: null}
+const INITIAL_STATE = { cuisines : {} }
 
 export default function(state = INITIAL_STATE, action) {
     switch (action.type) {
@@ -13,7 +13,7 @@ export default function(state = INITIAL_STATE, action) {
                 return res;
             },{});
 
-            return {...state, cuisines: cuisineObj, doneLoading: true};
+            return {...state, cuisines: cuisineObj};
         }
         default:
             return state;

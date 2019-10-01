@@ -1,13 +1,11 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route} from "react-router-dom";
+
+import App from "../pages/Restaurants/Restaurants";
+import Header from "../components/Header";
 
 import store from "../redux/store";
-import RestaurantPage from "../pages/Restaurants";
-import App from "../components/App";
-// import Restaurants from "pages/Restaurants";
-// import SingleRestaurant from "pages/SingleRestaurant";
-import Header from "../components/Header";
 
 const Routing = () => (
     <Provider {...{ store }}>

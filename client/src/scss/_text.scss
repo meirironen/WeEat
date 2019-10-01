@@ -1,0 +1,18 @@
+@mixin bold-text($important: false) {
+  font-family: "proxima-nova", "Rubik",
+  sans-serif if($important, !important, null);
+  font-weight: 700 if($important, !important, null);
+  font-style: normal if($important, !important, null);
+}
+@mixin semibold-text($important: false) {
+  font-family: "proxima-nova", "Rubik",
+  sans-serif if($important, !important, null);
+  font-weight: 600 if($important, !important, null);
+  font-style: normal if($important, !important, null);
+}
+@mixin text($important: false) {
+  font-family: "proxima-nova", "Rubik",
+  sans-serif if($important, !important, null);
+  font-weight: 400 if($important, !important, null);
+  font-style: normal if($important, !important, null);
+}
