@@ -9,14 +9,14 @@ const initialState = {
 	results: []
 };
 
-class Header extends Component {
+class Header extends React.PureComponent {
 	state = initialState;
 
 	render() {
 		const { isLoading, results, value } = this.state;
 
 		return (
-			<header className={styles.Header}>
+			<header className={styles.header}>
 				<Darken percentage={15} />
 				<h1>
 					<a href="/">WeEat</a>

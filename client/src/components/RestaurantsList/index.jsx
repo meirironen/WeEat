@@ -17,7 +17,7 @@ class RestaurantsList extends Component {
 		const {restaurants } = this.props.restaurants;
 		if (this.state.loaded){
 			return(
-				<div className={styles.RestaurantList}>
+				<div className={styles.listContainer}>
 					{restaurants
 					 	? restaurants.map(restaurant => (
 							<RestaurantListItem data={restaurant} key={restaurant.id}> </RestaurantListItem>

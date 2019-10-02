@@ -1,6 +1,6 @@
 @import "../../scss/layout", "../../scss/font-size", "../../scss/text";
 
-.RestaurantListItem {
+.itemContainer {
   @extend %row;
   padding: calculateRem(28px, "em") calculateRem(17px, "em");
   background-color: #fafafa;
@@ -8,7 +8,7 @@
   border: solid 1px #eeeeee;
   margin-bottom: 8px;
 
-  .Cuisine {
+  .cuisine {
     @extend %column;
     @include fontSize(72px, "em");
     flex-grow: 0;
@@ -17,15 +17,15 @@
     color: #f54343;
     height: calculateRem(42px);
   }
-  .Details {
+  .details {
     padding: 0 calculateRem(17px, "em");
 
-    .Name {
+    .name {
       @include fontSize(20px, "em");
       @include semibold-text();
     }
 
-    .Address{
+    .address{
       @include fontSize(12px,"em");
       @include text();
       color : grey;

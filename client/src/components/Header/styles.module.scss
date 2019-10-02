@@ -1,7 +1,7 @@
 //@import "./scss/background", "./scss/text", "./scss/layout", "./scss/font-size";
 @import "../../scss/background", "../../scss/text", "../../scss/layout", "../../scss/font-size";
 
-.Header {
+.header {
   @extend %column;
   @include background();
   @include semibold-text();

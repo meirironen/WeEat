@@ -5,7 +5,7 @@ const INITIAL_STATE = { restaurants : [], currentRestaurantId: undefined };
 export default function(state = INITIAL_STATE, action) {
     switch (action.type) {
         case RESET:{
-            return { ...state }
+            return {...state, INITIAL_STATE}
         }
 
         case FETCH_RESTAURANTS:{
