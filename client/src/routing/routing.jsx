@@ -2,7 +2,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, Switch, Route} from "react-router-dom";
 
-import App from "../pages/Restaurants/Restaurants";
+import Restaurants from "../pages/Restaurants/Restaurants";
 import Header from "../components/Header";
 
 import store from "../redux/store";
@@ -12,7 +12,7 @@ const Routing = () => (
         <BrowserRouter>
             <Header />
             <Switch>
-                <Route exact path="/" component={App} />
+                <Route exact path="/" component={Restaurants} />
                 {/*<Route*/}
                 {/*    path="/:id"*/}
                 {/*    render={({ match }) => {*/}
