@@ -1,0 +1,6 @@
+@import "./scss/globals";
+
+#root {
+  @extend %column;
+  min-height: 100vh;
+}

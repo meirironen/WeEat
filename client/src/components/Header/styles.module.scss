@@ -1,0 +1,35 @@
+//@import "./scss/background", "./scss/text", "./scss/layout", "./scss/font-size";
+@import "../../scss/background", "../../scss/text", "../../scss/layout", "../../scss/font-size";
+
+.header {
+  @extend %column;
+  @include background();
+  @include semibold-text();
+  flex: 0;
+  align-items: center;
+  background-color: #282c34;
+  background-image: url("/images/bg.png");
+  color: white;
+  padding: 38px 0 28px;
+  text-align: center;
+  h1 {
+    @include bold-text();
+    @include fontSize(64px);
+    margin-bottom: 0;
+  }
+  h2 {
+    @include fontSize(20px);
+    @include semibold-text();
+    margin: calculateRem(16px) 0 calculateRem(24px);
+  }
+  input {
+    @include text(true);
+    @include fontSize(16px);
+    border-radius: 3px !important;
+    width: 460px;
+  }
+  i {
+    color: #282829;
+    opacity: 1 !important;
+  }
+}

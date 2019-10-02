@@ -1,0 +1,26 @@
+@import url("https://use.typekit.net/ico6zwm.css");
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap&subset=hebrew");
+@import "../scss/text", "../scss/layout";
+
+* {
+  position: relative;
+}
+
+a {
+  color: unset !important;
+  text-decoration: unset !important;
+}
+
+#root {
+  @include text();
+  background-color: #eceff1;
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  padding: 0;
+  margin: 0;
+}

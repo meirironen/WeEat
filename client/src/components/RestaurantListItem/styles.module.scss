@@ -1,0 +1,34 @@
+@import "../../scss/layout", "../../scss/font-size", "../../scss/text";
+
+.itemContainer {
+  @extend %row;
+  padding: calculateRem(28px, "em") calculateRem(17px, "em");
+  background-color: #fafafa;
+  border-radius: 5px;
+  border: solid 1px #eeeeee;
+  margin-bottom: 8px;
+
+  .cuisine {
+    @extend %column;
+    @include fontSize(72px, "em");
+    flex-grow: 0;
+    justify-content: center;
+    font-family: "ef_cuisinesregular";
+    color: #f54343;
+    height: calculateRem(42px);
+  }
+  .details {
+    padding: 0 calculateRem(17px, "em");
+
+    .name {
+      @include fontSize(20px, "em");
+      @include semibold-text();
+    }
+
+    .address{
+      @include fontSize(12px,"em");
+      @include text();
+      color : grey;
+    }
+  }
+}
