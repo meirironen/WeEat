@@ -10,7 +10,7 @@
 
   .Cuisine {
     @extend %column;
-    @include fontSize(42px, "em");
+    @include fontSize(72px, "em");
     flex-grow: 0;
     justify-content: center;
     font-family: "ef_cuisinesregular";
@@ -23,7 +23,12 @@
     .Name {
       @include fontSize(20px, "em");
       @include semibold-text();
-      margin-bottom: 4px;
+    }
+
+    .Address{
+      @include fontSize(12px,"em");
+      @include text();
+      color : grey;
     }
   }
 }

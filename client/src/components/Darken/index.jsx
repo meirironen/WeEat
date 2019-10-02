@@ -8,11 +8,7 @@ const style = {
 	bottom: 0
 };
 
-type Props = {
-	percentage: number
-};
-
-const Darken = ({ percentage = 0 }: Props) => (
+const Darken = ({ percentage = 0 }) => (
 	<div style={{ ...style, backgroundColor: `rgba(0,0,0,.${percentage})` }} />
 );
 
