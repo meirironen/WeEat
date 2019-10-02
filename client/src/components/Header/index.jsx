@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Darken from "../Darken";
 
 import styles from "./styles.module.scss";
@@ -9,7 +9,7 @@ const initialState = {
 	results: []
 };
 
-class Header extends React.PureComponent {
+class Header extends PureComponent {
 	state = initialState;
 
 	render() {

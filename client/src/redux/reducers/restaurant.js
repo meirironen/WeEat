@@ -1,18 +1,16 @@
+import { handleActions } from 'redux-actions';
 import {  FETCH_RESTAURANTS, RESET } from '../action-types'
 
-const INITIAL_STATE = { restaurants : [], currentRestaurantId: undefined };
+const INITIAL_STATE = { restaurants : [], currentRestaurantId: undefined, loaded:null };
 
-export default function(state = INITIAL_STATE, action) {
-    switch (action.type) {
-        case RESET:{
-            return {...state, INITIAL_STATE}
+export default handleActions(
+    {
+        [RESET] : (state, actions) => {
+            return {...state, INITIAL_STATE};
+        },
+
+        [FETCH_RESTAURANTS]: (state, action) =>{
+            return { ...state, restaurants: action.payload, loaded:true };
         }
-
-        case FETCH_RESTAURANTS:{
-            return { ...state, restaurants: action.payload };
-        }
-
-        default:
-            return state;
-    }
-}
+    }, INITIAL_STATE
+)

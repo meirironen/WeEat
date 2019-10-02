@@ -1,24 +1,17 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-
 import { Loader } from 'semantic-ui-react';
 
 import RestaurantsList from '../../components/RestaurantsList'
-
-import {fetchCuisines} from "../../redux/actions/cuisine";
+import {getCuisines} from "../../redux/actions/cuisine";
 
 
 class Restaurants extends Component {
-    state = {
-        loaded : false
-    }
     async componentDidMount() {
-        await this.props.fetchCuisines();
-        this.setState(state => ({loaded:true}))
+        await this.props.getCuisines();
     }
-
     render(){
-        if (this.state.loaded){
+        if (this.props.cuisines.loaded){
             return (<div><RestaurantsList> </RestaurantsList></div>);
         }
         else {
@@ -31,4 +24,4 @@ const mapStateToProps =  ({ cuisines }) => {
     return {cuisines};
 };
 
-export default connect(mapStateToProps, {fetchCuisines})(Restaurants);
+export default connect(mapStateToProps, {getCuisines})(Restaurants);

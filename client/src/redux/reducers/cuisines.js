@@ -1,21 +1,20 @@
+import {handleActions} from 'redux-actions'
 import {FETCH_CUISINES, RESET} from '../action-types'
 
-const INITIAL_STATE = { cuisines : {} }
+const INITIAL_STATE = {cuisines: {}, loaded: null};
 
-export default function(state = INITIAL_STATE, action) {
-    switch (action.type) {
-        case RESET:{
-            return {...state, INITIAL_STATE}
-        }
-        case FETCH_CUISINES: {
-            let cuisineObj = action.payload.reduce((res, cuisine) => {
+export default handleActions(
+    {
+        [RESET]: (state, actions) => ({
+            ...state, INITIAL_STATE
+        }),
+
+        [FETCH_CUISINES]: (state, action) => ({
+            ...state,
+            cuisines: action.payload.reduce((res, cuisine) => {
                 res[cuisine.id] = cuisine.name;
                 return res;
-            },{});
-
-            return {...state, cuisines: cuisineObj};
-        }
-        default:
-            return state;
-    }
-}
+            }, {}),
+            loaded:true
+        })
+    },INITIAL_STATE);

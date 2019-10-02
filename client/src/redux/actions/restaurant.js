@@ -1,23 +1,18 @@
+import {createAction} from "redux-actions";
+
 import serverapi from "../../apis/serverapi";
 import {FETCH_RESTAURANTS, FETCH_RESTAURANT_BY_ID} from "../action-types";
 
-export const fetchRestaurants = () => {
-    return async dispatch => {
-        const response = await serverapi.get(`/restaurants`);
-        dispatch( {
-            type: FETCH_RESTAURANTS,
-            payload: response.data
-        })
-    }
-}
 
-export const fetchRestaurantById = (id) => {
-    return async dispatch => {
-        const response = await serverapi.get(`/restaurants/${id}`)
+export const loadRestaurants = createAction(FETCH_RESTAURANTS);
+export const loadRestaurant = createAction(FETCH_RESTAURANT_BY_ID);
 
-        dispatch({
-            type : FETCH_RESTAURANT_BY_ID,
-            payload: response.data
-        })
-    }
+export const getRestaurants = () => async dispatch =>{
+    const response = await serverapi.get(`/restaurants`);
+    return dispatch(loadRestaurants(response.data));
+};
+
+export const getRestaurantById = (id) => async dispatch => {
+    const response = await serverapi.get(`/restaurants/${id}`);
+    return dispatch(loadRestaurant(response.data));
 }

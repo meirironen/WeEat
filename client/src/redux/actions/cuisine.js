@@ -1,12 +1,10 @@
+import {createAction} from 'redux-actions';
 import serverapi from "../../apis/serverapi";
 import {FETCH_CUISINES} from "../action-types";
 
-export const fetchCuisines = () => {
-    return async dispatch => {
-        const response = await serverapi.get(`/cuisines`);
-        dispatch( {
-            type: FETCH_CUISINES,
-            payload: response.data
-        })
-    }
+export const loadCuisines = createAction(FETCH_CUISINES);
+
+export const getCuisines = () => async dispatch =>{
+    const response = await serverapi.get(`/cuisines`);
+    return dispatch(loadCuisines(response.data));
 }
