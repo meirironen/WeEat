@@ -4,6 +4,7 @@ import { Loader } from 'semantic-ui-react';
 
 import RestaurantsList from '../../components/RestaurantsList'
 import {getCuisines} from "../../redux/actions/cuisine";
+import Gmap from "../../components/Map";
 
 
 class Restaurants extends Component {
@@ -12,7 +13,11 @@ class Restaurants extends Component {
     }
     render(){
         if (this.props.cuisines.loaded){
-            return (<div><RestaurantsList> </RestaurantsList></div>);
+            return (
+                <div>
+                    <RestaurantsList/>
+                    <Gmap/>
+                </div>);
         }
         else {
             return (<Loader size="massive" active/>);
