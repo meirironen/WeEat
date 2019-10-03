@@ -1,0 +1,7 @@
+@import "../../scss/layout", "../../scss/font-size";
+.Map {
+  @extend %column;
+  margin-left: 30vw;
+  height: 700px;
+  width: 1150px;
+}
