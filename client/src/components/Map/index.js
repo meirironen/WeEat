@@ -4,7 +4,6 @@ import Marker from '../Map/Marker'
 
 import styles from './styles.module.scss'
 import {connect} from "react-redux";
-import {getCuisines} from "../../redux/actions/cuisine";
 
 const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
 export const CENTER = {
@@ -14,37 +13,37 @@ export const CENTER = {
 const ZOOM = 15;
 
 class Gmap extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            selectedItem : null
+
+    markerDisplay = ({id, name, address, cuisine_id, rating})=>{
+        const {cuisines} = this.props.cuisines;
+        let cuisine = cuisines[cuisine_id];
+        return {
+            id, name, address, cuisine, rating
         }
     }
+
     render() {
         const {restaurants} = this.props.restaurants;
-
         return <div className={styles.Map}>
             <GoogleMapReact
                 bootstrapURLKeys={{key: REACT_APP_GOOGLE_MAPS_API_KEY}}
                 defaultCenter={CENTER}
                 defaultZoom={ZOOM}
-                onChildClick={(restId) => this.setState({selectedItem : restId}) }
+                onChildClick={(restId)=> { if (restId !== this.props.selectedRestId) {this.props.onMarkerClick(restId)}}}
             >
-
                 {
-
                     restaurants.map(
-                        ({id, name, latitude, longitude}) =>
-                            <Marker key={id} name={name} lat={latitude}
-                                    lng={longitude} show={id.toString() === this.state.selectedItem}/>
-                    )
-                }
+                        (restaurant) =>
+                            <Marker key={restaurant.id} lat={restaurant.latitude} lng={restaurant.longitude}
+                                    markerData={this.markerDisplay(restaurant)}
+                                    show={restaurant.id.toString() === this.props.selectedRestId}/>
+                )}
             </GoogleMapReact>
         </div>;
     }
 }
 
-const mapStateToProps =  ({ cuisines, restaurants }) => {
+const mapStateToProps = ({ cuisines, restaurants }) => {
     return {cuisines, restaurants};
 };
 

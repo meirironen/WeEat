@@ -8,15 +8,29 @@ import Gmap from "../../components/Map";
 
 
 class Restaurants extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            selectedRestId: undefined
+        }
+    }
     async componentDidMount() {
         await this.props.getCuisines();
     }
+
+    handleRestChange = (id) => {
+        this.setState({
+            selectedRestId: id
+        });
+    };
+
     render(){
         if (this.props.cuisines.loaded){
             return (
                 <div>
-                    <RestaurantsList/>
-                    <Gmap/>
+                    <RestaurantsList onRestClick={this.handleRestChange} selectedRestId={this.state.selectedRestId}/>
+                    <Gmap onMarkerClick={this.handleRestChange} selectedRestId={this.state.selectedRestId}/>
                 </div>);
         }
         else {
