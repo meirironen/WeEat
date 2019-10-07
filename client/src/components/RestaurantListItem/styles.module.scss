@@ -8,6 +8,10 @@
   border: solid 1px #eeeeee;
   margin-bottom: 8px;
 
+  &.selected{
+    border: 2px #f54343 solid;
+  }
+
   .cuisine {
     @extend %column;
     @include fontSize(72px, "em");
@@ -29,6 +33,13 @@
       @include fontSize(12px,"em");
       @include text();
       color : grey;
+      padding-left: 5px;
+    }
+
+    .delivery{
+      @include fontSize(12px,"em");
+      @include text();
+      padding-left: 5px;
     }
   }
 }

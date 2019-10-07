@@ -3,7 +3,6 @@ import {createAction} from "redux-actions";
 import serverapi from "../../apis/serverapi";
 import {FETCH_RESTAURANTS, FETCH_RESTAURANT_BY_ID} from "../action-types";
 
-
 export const loadRestaurants = createAction(FETCH_RESTAURANTS);
 export const loadRestaurant = createAction(FETCH_RESTAURANT_BY_ID);
 

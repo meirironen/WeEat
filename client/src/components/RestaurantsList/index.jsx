@@ -18,7 +18,8 @@ class RestaurantsList extends Component {
 				<div className={styles.listContainer}>
 					{restaurants.restaurants
 					 	? restaurants.restaurants.map(restaurant => (
-							<RestaurantListItem data={restaurant} cuisines={cuisines} key={restaurant.id}> </RestaurantListItem>
+							<RestaurantListItem data={restaurant} cuisines={cuisines} key={restaurant.id}
+							restClickHandler={this.props.onRestClick} selectedRestId={this.props.selectedRestId}/>
 						 )): "Loading"}
 				 </div>
 			);

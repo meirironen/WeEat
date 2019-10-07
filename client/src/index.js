@@ -8,6 +8,8 @@ import store from "./redux/store";
 import { Provider } from "react-redux";
 
 import * as serviceWorker from "./serviceWorker";
+require('dotenv').config();
+
 
 ReactDOM.render(
     <Provider store={store}>
