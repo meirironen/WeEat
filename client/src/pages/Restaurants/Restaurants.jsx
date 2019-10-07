@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Loader } from 'semantic-ui-react';
-
+import FilterBar from '../../components/FilterBar'
 import RestaurantsList from '../../components/RestaurantsList'
 import {getCuisines} from "../../redux/actions/cuisine";
 import Gmap from "../../components/Map";
@@ -29,6 +29,7 @@ class Restaurants extends Component {
         if (this.props.cuisines.loaded){
             return (
                 <div>
+                    <FilterBar />
                     <RestaurantsList onRestClick={this.handleRestChange} selectedRestId={this.state.selectedRestId}/>
                     <Gmap onMarkerClick={this.handleRestChange} selectedRestId={this.state.selectedRestId}/>
                 </div>);

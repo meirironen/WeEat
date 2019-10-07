@@ -1,0 +1,14 @@
+@import "../../scss/layout";
+
+.FilterGroup {
+  @extend %row;
+  flex: 0;
+  justify-content: center;
+  background-color: #f54343;
+  padding: 12px 32px;
+  color: white;
+
+  .Filter {
+    margin-bottom: 6px;
+  }
+}
