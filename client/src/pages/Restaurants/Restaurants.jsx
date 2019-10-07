@@ -8,13 +8,10 @@ import Gmap from "../../components/Map";
 
 
 class Restaurants extends Component {
-    constructor(props){
-        super(props);
+    state = {
+        selectedRestId: undefined
+    };
 
-        this.state = {
-            selectedRestId: undefined
-        }
-    }
     async componentDidMount() {
         await this.props.getCuisines();
     }

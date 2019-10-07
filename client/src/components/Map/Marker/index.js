@@ -1,17 +1,17 @@
-import React, {Fragment} from 'react';
-import {Popup, PopupContent} from "semantic-ui-react";
+import React from 'react';
+import classNames from "classnames";
+import {Popup,PopupHeader, PopupContent} from "semantic-ui-react";
+
 import styles from './styles.module.scss';
-import PopupHeader from "semantic-ui-react/dist/commonjs/modules/Popup/PopupHeader";
 import Stars from "../../Stars";
 import {CuisineIconsMapping} from "../../../utlis/constants";
 
-const Marker = (props: any) => {
-    const markerStyles = `${styles.pin} ${styles.bounce}`;
+const Marker = (props) => {
     return (
-        <Fragment>
-            {props.show && <div id={`marker-${props.markerData.key}`} className={styles.pulse} />}
+        <>
+            {props.show && <div className={styles.pulse} />}
             {<Popup
-                trigger={<div className={markerStyles}></div>} open={props.show}>
+                trigger={<div className={classNames(styles.pin, styles.bounce)}></div>} open={props.show}>
                 <PopupHeader>
                     <div> {props.markerData.name} <Stars rating={props.markerData.rating}/> </div>
                 </PopupHeader>
@@ -25,7 +25,7 @@ const Marker = (props: any) => {
                 </PopupContent>
              </Popup>
             }
-        </Fragment>
+        </>
     );
 };
 
