@@ -11,15 +11,20 @@ const RATING_OPTIONS = Array(3)
         value: (index + 1).toString()
     }));
 
-const insertEmptyValues = arrayFilter => [{text:'', value:''}].concat(arrayFilter)
+const insertEmptyValues = arrayFilter => [{text:'', value:''}].concat(arrayFilter);
 
 
-const createFilters = (cuisines: string[] = []) => [
+const createFilters = (cuisines = {}) => [
     {
         filterKey: "cuisine",
         label: "Cuisine",
         placeholder: "Asian, Indian, American...",
-        options: insertEmptyValues(cuisines.map(cuisine => ({ text: cuisine, value: cuisine })))
+        options: insertEmptyValues(Object.keys(cuisines).map(id =>{
+            return {
+                text: cuisines[id],
+                value: id
+            }
+        }))
     },
     {
         filterKey: "rating",

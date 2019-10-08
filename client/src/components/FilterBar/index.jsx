@@ -3,33 +3,35 @@ import createFilters from "../../utlis/create-filters";
 import {connect} from "react-redux";
 import styles from './styles.module.scss'
 import { Select } from "semantic-ui-react";
+import {applyRestaurantFilter} from "../../redux/actions/restaurant";
 
 class FilterBar extends Component{
 
-    constructor(props){
-        super(props);
-        this.state = {
-            filters: null
-        }
-    }
-    componentDidMount(){
-        const { cuisines } = this.props.cuisines;
-        const filters = createFilters(cuisines);
-        this.setState({filters});
-    }
+    // onChange = (e, data) =>{
+    //     console.log(this.props);
+    //     debugger;
+    //     this.props.applyRestaurantFilter('ronen');
+    // }
 
     render() {
-        const { filters } = this.state;
+        const {cuisines} = this.props.cuisines;
+        const filters = createFilters(cuisines);
+        console.log(filters);
         return (
             <div className={styles.FilterGroup}>
                 {filters.map(
-                    ({ filterKey, label, placeholder, options, onChange }, index) => (
+                    ({ filterKey, label, placeholder, options, onChange}, index) => {
+                        console.log(`building filter`);
+                        console.log(filterKey);
 
-                        <div>
-                            <label>{label}</label>
-                            <Select {...{ placeholder, options, onChange }} />
-                        </div>
-                    )
+                        return (
+
+                            <div key={index}>
+                                <label>{label}</label>
+                                <Select {...{ placeholder, options}} />
+                            </div>
+                        )
+                    }
                 )}
             </div>
         );
@@ -42,4 +44,6 @@ const mapStateToProps =  ({ cuisines }) => {
     return {cuisines};
 };
 
-export default connect(mapStateToProps)(FilterBar);
+const mapDispatchToProps = { applyRestaurantFilter };
+
+export default connect(mapStateToProps,mapDispatchToProps)(FilterBar);
