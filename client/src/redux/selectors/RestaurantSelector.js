@@ -1,25 +1,16 @@
 import { createSelector } from "reselect";
+import {FILTER_HANDLERS} from "../../utlis/create-filters";
 
 const filtersSelector = state => state.restaurants.filters;
 const restaurantSelector = state => state.restaurants.restaurants;
 
-
-function filterRestaurants(restaurants = [], filter = null){
-    console.log(filter);
-}
-
-
 export const filteredRestaurantSelector = createSelector(
     [restaurantSelector,filtersSelector], (restaurants, filters)=>{
-
-        if ( filters.length > 0 ){
-            debugger;
-            filters.map((filterKey, filterValue)=> {
-                filterRestaurants(restaurants, {filterKey,filterValue});
-            });
-        }
-
-        return restaurants;
+        let filteredList = [...restaurants];
+        Object.keys(filters).forEach(filterKey =>{
+            filteredList = FILTER_HANDLERS[filterKey](filteredList, filterKey, filters[filterKey]);
+        });
+        return filteredList;
 });
 
 
