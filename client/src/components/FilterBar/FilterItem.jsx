@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Select} from "semantic-ui-react";
 import {applyRestaurantFilter} from "../../redux/actions/restaurant";
 import {connect} from "react-redux";
+import styles from "./styles.module.scss"
 
 class FilterItem extends Component{
 
@@ -14,7 +15,7 @@ class FilterItem extends Component{
 
         return (
 
-            <div>
+            <div className={styles.filterItem}>
                 <label>{label}</label>
                 <Select {...{ placeholder, options}} onChange={this.handleOnChange}/>
             </div>

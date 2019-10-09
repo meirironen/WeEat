@@ -10,7 +10,7 @@ class FilterBar extends Component{
         const {cuisines} = this.props.cuisines;
         const filters = createFilters(cuisines || {});
         return (
-            <div className={styles.FilterGroup}>
+            <div className={styles.filtersContainer}>
                 {filters.map(
                     ({ filterKey, label, placeholder, options, filterMethod}, index) =>
                         <FilterItem {...{ filterKey, label, placeholder, options}} key={index}/>

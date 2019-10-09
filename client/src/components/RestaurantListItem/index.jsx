@@ -10,6 +10,7 @@ const RestaurantListItem = (props) => {
 	const restaurant = props.data || null;
 	const handleRestSelection = () => props.restClickHandler(restaurant.id.toString());
 
+
 	if (restaurant){
 		const selected = props.selectedRestId === restaurant.id.toString() && styles.selected;
 
@@ -18,7 +19,10 @@ const RestaurantListItem = (props) => {
 				<div className={styles.cuisine}>{CuisineIconsMapping[cuisines[restaurant.cuisine_id]]}</div>
 				<div className={styles.details}>
 					<div className={styles.name} onClick={ handleRestSelection}>{restaurant.name}
-						<Stars rating={restaurant.rating}/></div>
+						<div>
+							<Stars rating={restaurant.rating}/>
+						</div>
+					</div>
 					<div className={styles.address}>{restaurant.address}</div>
 					<div className={styles.delivery}>Delivers in : {restaurant.deliverytime} minutes</div>
 				</div>

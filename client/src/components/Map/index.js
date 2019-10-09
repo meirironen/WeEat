@@ -25,7 +25,7 @@ class Gmap extends Component{
 
     render() {
         const {restaurants} = this.props;
-        return <div className={styles.Map}>
+        return <div className={styles.mapContainer}>
             <GoogleMapReact
                 bootstrapURLKeys={{key: REACT_APP_GOOGLE_MAPS_API_KEY}}
                 defaultCenter={CENTER}

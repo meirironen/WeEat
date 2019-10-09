@@ -336,17 +336,25 @@
   }
 }
 
+.headerContainer{
+  flex-direction: row;
+}
+
 .markerContainer{
   position:relative;
+  display: flex;
+  flex: 0;
+  flex-direction: row;
+
   .cuisineIcon{
-    float:left;
     font-family: "ef_cuisinesregular";
     color: #f54343;
     @include fontSize(36px, "em");
     padding-top: 3px;
   }
+
   .cuisineText{
-    float:right;
+    margin-left: 15px;
   }
 }
 

@@ -2,44 +2,47 @@
 
 .itemContainer {
   @extend %row;
-  padding: calculateRem(28px, "em") calculateRem(17px, "em");
+  padding: calculateRem(15px, "em") calculateRem(15px, "em");
   background-color: #fafafa;
   border-radius: 5px;
   border: solid 1px #eeeeee;
-  margin-bottom: 8px;
+  margin-bottom: calculateRem(5px, "em");
+  align-items: stretch;
+  flex: 0 1 auto;
 
   &.selected{
     border: 2px #f54343 solid;
   }
 
   .cuisine {
-    @extend %column;
-    @include fontSize(72px, "em");
+    @include fontSize(64px, "em");
     flex-grow: 0;
     justify-content: center;
     font-family: "ef_cuisinesregular";
     color: #f54343;
-    height: calculateRem(42px);
   }
   .details {
+    min-width: 85%;
     padding: 0 calculateRem(17px, "em");
 
     .name {
       @include fontSize(20px, "em");
       @include semibold-text();
+      flex-direction: row;
     }
 
     .address{
       @include fontSize(12px,"em");
       @include text();
       color : grey;
-      padding-left: 5px;
+      padding-left: 1px
+
     }
 
     .delivery{
       @include fontSize(12px,"em");
       @include text();
-      padding-left: 5px;
+      padding-left: calculateRem(3px, "em");
     }
   }
 }

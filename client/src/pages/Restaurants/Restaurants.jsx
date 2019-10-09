@@ -5,7 +5,7 @@ import FilterBar from '../../components/FilterBar'
 import RestaurantsList from '../../components/RestaurantsList'
 import {getCuisines} from "../../redux/actions/cuisine";
 import Gmap from "../../components/Map";
-
+import styles from "./styles.module.scss"
 
 class Restaurants extends Component {
     state = {
@@ -27,8 +27,11 @@ class Restaurants extends Component {
             return (
                 <div>
                     <FilterBar />
-                    <RestaurantsList onRestClick={this.handleRestChange} selectedRestId={this.state.selectedRestId}/>
-                    <Gmap onMarkerClick={this.handleRestChange} selectedRestId={this.state.selectedRestId}/>
+                    <div className={styles.restaurantList}>
+                        <RestaurantsList onRestClick={this.handleRestChange} selectedRestId={this.state.selectedRestId}/>
+                        <Gmap onMarkerClick={this.handleRestChange} selectedRestId={this.state.selectedRestId}/>
+                    </div>
+
                 </div>);
         }
         else {

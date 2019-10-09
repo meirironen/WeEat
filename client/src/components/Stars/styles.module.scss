@@ -1,6 +1,8 @@
-@import "../../scss/font-size";
+@import "../../scss/font-size", "../../scss/layout";
 
 .rating {
+  @extend %row;
   @include fontSize(10px,"em");
   padding-left: 5px;
+  ;
 }
