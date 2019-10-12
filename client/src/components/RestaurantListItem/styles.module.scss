@@ -1,34 +1,34 @@
 @import "../../scss/layout", "../../scss/font-size", "../../scss/text";
 
 .itemContainer {
-  @extend %row;
+  @extend %flex-row;
   padding: calculateRem(15px, "em") calculateRem(15px, "em");
   background-color: #fafafa;
   border-radius: 5px;
-  border: solid 1px #eeeeee;
   margin-bottom: calculateRem(5px, "em");
-  align-items: stretch;
-  flex: 0 1 auto;
 
   &.selected{
     border: 2px #f54343 solid;
   }
 
   .cuisine {
+    @extend %flex-column;
+    justify-content: center;
     @include fontSize(64px, "em");
-    flex-grow: 0;
     justify-content: center;
     font-family: "ef_cuisinesregular";
     color: #f54343;
   }
   .details {
-    min-width: 85%;
+    @extend %flex-column;
+    flex-grow: 1;
     padding: 0 calculateRem(17px, "em");
 
     .name {
+      @extend %flex-row;
+      flex-wrap: wrap;
       @include fontSize(20px, "em");
       @include semibold-text();
-      flex-direction: row;
     }
 
     .address{
@@ -36,7 +36,6 @@
       @include text();
       color : grey;
       padding-left: 1px
-
     }
 
     .delivery{

@@ -25,13 +25,12 @@ class Restaurants extends Component {
     render(){
         if (this.props.cuisines.loaded){
             return (
-                <div>
+                <div className={styles.restPageContainer}>
                     <FilterBar />
                     <div className={styles.restaurantList}>
                         <RestaurantsList onRestClick={this.handleRestChange} selectedRestId={this.state.selectedRestId}/>
                         <Gmap onMarkerClick={this.handleRestChange} selectedRestId={this.state.selectedRestId}/>
                     </div>
-
                 </div>);
         }
         else {

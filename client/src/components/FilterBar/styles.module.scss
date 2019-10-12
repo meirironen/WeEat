@@ -1,9 +1,9 @@
 @import "../../scss/layout";
 
 .filtersContainer {
-  @extend %row;
-  flex: 0;
+  @extend %flex-row;
   justify-content: center;
+  flex-flow: wrap;
   background-color: #f54343;
   padding: 10px;
   color: white;
@@ -12,5 +12,9 @@
     flex-grow: 0;
     margin-bottom: 6px;
     padding: 0 20px;
+
+    label{
+      padding-right: 10px;
+    }
   }
 }

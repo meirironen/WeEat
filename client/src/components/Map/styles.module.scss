@@ -1,6 +1,10 @@
 @import "../../scss/layout";
 
 .mapContainer {
-  @extend %row;
-  min-height: 75vh;
+  @extend %flex-column;
+  flex: 5 1 1px
+}
+
+.scrollable{
+  @extend %scrollable;
 }

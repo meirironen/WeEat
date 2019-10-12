@@ -17,11 +17,13 @@ class RestaurantsList extends Component {
 		if (loaded){
 			return(
 				<div className={styles.listContainer}>
+					<div className={styles.scrollable}>
 					{restaurants && restaurants.length > 0
 					 	? restaurants.map(restaurant => (
 							<RestaurantListItem data={restaurant} cuisines={cuisines} key={restaurant.id}
 							restClickHandler={this.props.onRestClick} selectedRestId={this.props.selectedRestId}/>
 						 )):  <Message visible>No Restaurants Around...</Message> }
+					</div>
 				 </div>
 			);
 		}

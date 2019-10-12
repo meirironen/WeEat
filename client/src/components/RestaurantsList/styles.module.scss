@@ -1,4 +1,11 @@
+@import "../../scss/layout";
+
 .listContainer {
-  width: 30%;
+  @extend %flex-column;
+  flex: 2 1 1px;
   padding: 20px 15px;
+}
+
+.scrollable{
+  @extend %scrollable;
 }

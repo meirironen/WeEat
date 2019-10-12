@@ -3,22 +3,7 @@
 @import "../scss/text", "../scss/layout";
 
 * { box-sizing: border-box; }
-html, body { min-height: 100vh; margin: 0; }
-
-div,
-html,
-body,
-nav,
-header,
-hgroup,
-footer,
-section,
-article {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-}
+html, body { height: 100vh; margin: 0; }
 
 p,
 h1,
@@ -34,7 +19,6 @@ h4 {
   @include text();
   background-color: #eceff1;
 }
-
 
 a {
   color: unset !important;

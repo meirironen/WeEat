@@ -26,6 +26,7 @@ class Gmap extends Component{
     render() {
         const {restaurants} = this.props;
         return <div className={styles.mapContainer}>
+            <div className={styles.scrollable}>
             <GoogleMapReact
                 bootstrapURLKeys={{key: REACT_APP_GOOGLE_MAPS_API_KEY}}
                 defaultCenter={CENTER}
@@ -40,6 +41,7 @@ class Gmap extends Component{
                                     show={restaurant.id.toString() === this.props.selectedRestId}/>
                 )}
             </GoogleMapReact>
+            </div>
         </div>;
     }
 }

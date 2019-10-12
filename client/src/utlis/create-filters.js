@@ -25,11 +25,7 @@ const equalityFilterHandler = (list = [], filterKey = '', filterValue = null) =>
 
 const numberLessThanFilter = (list = [], filterKey = '', filterValue = null) =>{
     if ( !filterKey) return list;
-    return list.filter( item => {
-       let x = item[filterKey] <= Number(filterValue);
-       debugger;
-        return x;
-    })
+    return list.filter( item => item[filterKey] <= Number(filterValue));
 };
 
 export const FILTER_HANDLERS = {
@@ -38,9 +34,7 @@ export const FILTER_HANDLERS = {
     [FILTER_KEYS.DELIVERY_TIME] : numberLessThanFilter,
 };
 
-
 const insertEmptyValues = arrayFilter => [{text:'', value:''}].concat(arrayFilter);
-
 
 const createFilters = (cuisines = {}) => [
     {
