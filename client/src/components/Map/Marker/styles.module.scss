@@ -1,4 +1,4 @@
-@import "../../../scss/font-size", "../../../scss/text";
+@import "../../../scss/layout","../../../scss/font-size", "../../../scss/text";
 
 .pin {
   width: 30px;
@@ -342,9 +342,8 @@
 
 .markerContainer{
   position:relative;
-  display: flex;
+  @extend %flex-row;
   flex: 0;
-  flex-direction: row;
 
   .cuisineIcon{
     font-family: "ef_cuisinesregular";

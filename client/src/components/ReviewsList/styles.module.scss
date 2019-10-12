@@ -1,0 +1,40 @@
+@import "../../scss/layout", "../../scss/font-size", "../../scss/text";
+
+.reviewListPane{
+  display: flex;
+  flex-direction: column;
+  flex:1;
+  border-top: 2px solid grey;
+
+  .reviewHeader{
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+
+    .title{
+      padding: 15px;
+      @include fontSize(24px,"rem");
+      @include semibold-text();
+    }
+
+    .addReview{
+      cursor: pointer;
+      flex:5;
+      padding-right: 10px;
+      @include fontSize(20px,"rem");
+    }
+  }
+
+  .listContainer {
+    display:flex;
+    flex-direction:column;
+    flex: 2 1 1px;
+    padding: 20px 15px;
+  }
+
+  .scrollable{
+    @extend %scrollable;
+  }
+}
+
