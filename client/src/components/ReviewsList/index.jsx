@@ -5,25 +5,31 @@ import {Icon, List, Message} from "semantic-ui-react";
 import {getRestaurantReviews} from "../../redux/actions/reviews";
 import ReviewListItem from "../ReviewListItem";
 import styles from "./styles.module.scss"
+import {AddReviewModal} from "./AddReviewModal";
 
 class ReviewsList extends Component{
+    state = {
+        openModal :false
+    };
+
+    modalCloseHandler = ()=> this.setState({openModal:false});
+
     componentDidMount() {
         this.props.getRestaurantReviews(this.props.restId);
     }
 
-
-    addReviewHandler = (e, data) => {
-    }
-
     render(){
-        const {reviews, loaded } = this.props.reviews;
+        const {reviews, loaded } = this.props;
         if (loaded){
             return(
                 <div className={styles.reviewListPane}>
                     <div className={styles.reviewHeader}>
                         <div className={styles.title}>Reviews</div>
-                        <div className={styles.addReview} onClick={this.addReviewHandler}>
-                            <Icon circular color="teal" name="add"/> Add Review
+                        <div className={styles.addReview} onClick={()=>this.setState({openModal:true})}>
+                            <div><Icon circular color="teal" name="add"/>Add Review</div>
+                            <AddReviewModal restId={this.props.restId} showModal={this.state.openModal}
+                                            closeHandler={this.modalCloseHandler}
+                            />
                         </div>
                     </div>
                     <div className={styles.listContainer}>
@@ -49,7 +55,7 @@ class ReviewsList extends Component{
 
 const mapStateToProps =  (state) => {
     return {
-        reviews: state.reviews,
+        reviews: state.reviews.reviews,
         loaded: state.reviews.loaded
     };
 };

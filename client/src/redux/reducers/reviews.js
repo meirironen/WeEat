@@ -10,18 +10,7 @@ export default handleActions(
         },
 
         [FETCH_REVIEWS]: (state, action) =>{
-            let tmp = []
-            let i = 1000;
-            for (let j=0; j<20; j++){
-                tmp.push({
-                    id: i+j,
-                    reviewer : `test rest ${j}`,
-                    rating: 2,
-                    comment: 'test steert'
-                })
-            }
-
-            return { ...state, reviews: [...tmp, action.payload], loaded:true };
+            return { ...state, reviews: action.payload, loaded:true };
         }
     },
     INITIAL_STATE

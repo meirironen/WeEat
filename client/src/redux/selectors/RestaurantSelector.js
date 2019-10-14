@@ -12,5 +12,3 @@ export const filteredRestaurantSelector = createSelector(
         });
         return filteredList;
 });
-
-

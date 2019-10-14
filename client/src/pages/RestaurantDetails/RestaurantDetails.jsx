@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
-import styles from "./styles.module.scss"
 import {connect} from "react-redux";
+import {Loader} from "semantic-ui-react";
 
+import ReviewsList from "../../components/ReviewsList";
+import {filteredRestaurantSelector} from "../../redux/selectors/RestaurantSelector";
+import {CuisineIconsMapping} from "../../utlis/constants";
 import {getCuisines} from "../../redux/actions/cuisine";
 import {getRestaurantById} from "../../redux/actions/restaurant";
-import {Loader} from "semantic-ui-react";
-import {filteredRestaurantSelector} from "../../redux/selectors/RestaurantSelector";
-import cuisines from "../../redux/reducers/cuisines";
-import {CuisineIconsMapping} from "../../utlis/constants";
-import ReviewsList from "../../components/ReviewsList";
+import styles from "./styles.module.scss"
 
 
 class RestaurantDetails extends Component {
@@ -20,7 +19,7 @@ class RestaurantDetails extends Component {
     }
   }
 
-  showRestaurantDetails = (restaurant) =>{
+  renderRestaurantDetails = (restaurant) =>{
     const {cuisine_id, name, address, foodcard, deliverytime} = restaurant;
     const {cuisines} = this.props.cuisines;
 
@@ -43,13 +42,13 @@ class RestaurantDetails extends Component {
             </div>
 
             <div className={styles.foodcard}>
-              <div className={styles.title}>Foodcard charge: </div>
-              <div>{foodcard.toString()}</div>
+              <div className={styles.title}>Food card charge: </div>
+              <div>{foodcard ? "Yes" : "No"}</div>
             </div>
         </div>
       </div>
     );
-  }
+  };
 
   render(){
     if (this.props.loaded){
@@ -57,15 +56,11 @@ class RestaurantDetails extends Component {
       return (
           <div className={styles.restaurantPageContainer}>
             <div className={styles.restaurantDetailsContainer}>
-              {this.showRestaurantDetails(restaurant)}
+              {this.renderRestaurantDetails(restaurant)}
             </div>
-
-              <ReviewsList restId={this.props.restaurantId} />
+            <ReviewsList restId={this.props.restaurantId} />
           </div>
       );
-
-
-
     }
     else {
       return (<Loader size="massive" active/>);
