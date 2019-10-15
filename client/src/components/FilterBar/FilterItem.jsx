@@ -17,7 +17,7 @@ class FilterItem extends Component{
 
             <div className={styles.filterItem}>
                 <label>{label}</label>
-                <Select {...{ placeholder, options}} onChange={this.handleOnChange}/>
+                <Select placeholder={placeholder} option={options} onChange={this.handleOnChange}/>
             </div>
         )
     }
