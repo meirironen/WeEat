@@ -1,30 +1,32 @@
 @import "../../scss/layout", "../../scss/font-size", "../../scss/text";
 
 .itemContainer {
-  @extend %row;
-  padding: calculateRem(28px, "em") calculateRem(17px, "em");
+  @extend %flex-row;
+  padding: calculateRem(15px, "em") calculateRem(15px, "em");
   background-color: #fafafa;
   border-radius: 5px;
-  border: solid 1px #eeeeee;
-  margin-bottom: 8px;
+  margin-bottom: calculateRem(5px, "em");
 
   &.selected{
     border: 2px #f54343 solid;
   }
 
   .cuisine {
-    @extend %column;
-    @include fontSize(72px, "em");
-    flex-grow: 0;
+    @extend %flex-column;
+    justify-content: center;
+    @include fontSize(64px, "em");
     justify-content: center;
     font-family: "ef_cuisinesregular";
     color: #f54343;
-    height: calculateRem(42px);
   }
   .details {
+    @extend %flex-column;
+    flex-grow: 1;
     padding: 0 calculateRem(17px, "em");
 
     .name {
+      @extend %flex-row;
+      flex-wrap: wrap;
       @include fontSize(20px, "em");
       @include semibold-text();
     }
@@ -33,13 +35,13 @@
       @include fontSize(12px,"em");
       @include text();
       color : grey;
-      padding-left: 5px;
+      padding-left: 1px
     }
 
     .delivery{
       @include fontSize(12px,"em");
       @include text();
-      padding-left: 5px;
+      padding-left: calculateRem(3px, "em");
     }
   }
 }

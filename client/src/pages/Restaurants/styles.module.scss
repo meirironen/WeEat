@@ -1,0 +1,11 @@
+@import "../../scss/layout";
+.restPageContainer{
+  @extend %flex-column;
+  flex:4;
+}
+
+.restaurantList{
+  flex: 4;
+  flex-wrap: wrap;
+  @extend %flex-row;
+}

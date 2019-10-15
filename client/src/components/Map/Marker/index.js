@@ -13,14 +13,15 @@ const Marker = (props) => {
             {<Popup
                 trigger={<div className={classNames(styles.pin, styles.bounce)}></div>} open={props.show}>
                 <PopupHeader>
-                    <div> {props.markerData.name} <Stars rating={props.markerData.rating}/> </div>
+                    <div className={styles.headerContainer}>
+                        <div> {props.markerData.name} </div>
+                        <Stars rating={props.markerData.rating}/>
+                    </div>
                 </PopupHeader>
                 <PopupContent>
-                    <div>
-                        <div className={styles.markerContainer}>
-                            <div className={styles.cuisineText}>{props.markerData.cuisine}</div>
-                            <div className={styles.cuisineIcon}> {CuisineIconsMapping[props.markerData.cuisine]}</div>
-                        </div>
+                    <div className={styles.markerContainer}>
+                        <div className={styles.cuisineIcon}> {CuisineIconsMapping[props.markerData.cuisine]}</div>
+                        <div className={styles.cuisineText}>{props.markerData.cuisine}</div>
                     </div>
                 </PopupContent>
              </Popup>

@@ -2,19 +2,8 @@
 @import url("https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap&subset=hebrew");
 @import "../scss/text", "../scss/layout";
 
-* {
-  position: relative;
-}
-
-a {
-  color: unset !important;
-  text-decoration: unset !important;
-}
-
-#root {
-  @include text();
-  background-color: #eceff1;
-}
+* { box-sizing: border-box; }
+html, body { height: 100vh; margin: 0; }
 
 p,
 h1,
@@ -23,4 +12,15 @@ h3,
 h4 {
   padding: 0;
   margin: 0;
+}
+
+
+#root {
+  @include text();
+  background-color: #eceff1;
+}
+
+a {
+  color: unset !important;
+  text-decoration: unset !important;
 }

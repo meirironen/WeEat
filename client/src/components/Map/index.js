@@ -4,6 +4,7 @@ import Marker from '../Map/Marker'
 
 import styles from './styles.module.scss'
 import {connect} from "react-redux";
+import {filteredRestaurantSelector} from "../../redux/selectors/RestaurantSelector";
 
 const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
 export const CENTER = {
@@ -23,8 +24,9 @@ class Gmap extends Component{
     }
 
     render() {
-        const {restaurants} = this.props.restaurants;
-        return <div className={styles.Map}>
+        const {restaurants} = this.props;
+        return <div className={styles.mapContainer}>
+            <div className={styles.scrollable}>
             <GoogleMapReact
                 bootstrapURLKeys={{key: REACT_APP_GOOGLE_MAPS_API_KEY}}
                 defaultCenter={CENTER}
@@ -39,12 +41,16 @@ class Gmap extends Component{
                                     show={restaurant.id.toString() === this.props.selectedRestId}/>
                 )}
             </GoogleMapReact>
+            </div>
         </div>;
     }
 }
 
-const mapStateToProps = ({ cuisines, restaurants }) => {
-    return {cuisines, restaurants};
+const mapStateToProps = (state) => {
+    return {
+        restaurants: filteredRestaurantSelector(state),
+        cuisines: state.cuisines,
+    }
 };
 
 export default connect(mapStateToProps)(Gmap);

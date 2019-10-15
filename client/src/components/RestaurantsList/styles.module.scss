@@ -1,9 +1,11 @@
+@import "../../scss/layout";
+
 .listContainer {
-  position: absolute;
-  width: 30vw;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  padding: 24px 20px 24px 42px;
-  //overflow-y: scroll;
+  @extend %flex-column;
+  flex: 2 1 1px;
+  padding: 20px 15px;
+}
+
+.scrollable{
+  @extend %scrollable;
 }

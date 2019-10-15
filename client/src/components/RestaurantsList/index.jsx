@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import {Message} from "semantic-ui-react";
 import {getRestaurants} from "../../redux/actions/restaurant";
+import {filteredRestaurantSelector} from "../../redux/selectors/RestaurantSelector";
 import RestaurantListItem from "../RestaurantListItem";
 import styles from './styles.module.scss';
 
@@ -10,17 +12,18 @@ class RestaurantsList extends Component {
 	}
 
 	render(){
-		const {restaurants } = this.props;
+		const {restaurants, loaded } = this.props;
 		const {cuisines} = this.props.cuisines;
-
-		if (restaurants.loaded){
+		if (loaded){
 			return(
 				<div className={styles.listContainer}>
-					{restaurants.restaurants
-					 	? restaurants.restaurants.map(restaurant => (
+					<div className={styles.scrollable}>
+					{restaurants && restaurants.length > 0
+					 	? restaurants.map(restaurant => (
 							<RestaurantListItem data={restaurant} cuisines={cuisines} key={restaurant.id}
 							restClickHandler={this.props.onRestClick} selectedRestId={this.props.selectedRestId}/>
-						 )): "Loading"}
+						 )):  <Message visible>No Restaurants Around...</Message> }
+					</div>
 				 </div>
 			);
 		}
@@ -30,10 +33,11 @@ class RestaurantsList extends Component {
 	}
 }
 
-const mapStateToProps = ({restaurants, cuisines}) => {
+const mapStateToProps = (state) => {
 	return {
-		restaurants :restaurants,
-		cuisines: cuisines
+		restaurants: filteredRestaurantSelector(state),
+		cuisines: state.cuisines,
+		loaded: state.restaurants.loaded
 	};
 }
 
