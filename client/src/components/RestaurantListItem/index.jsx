@@ -14,10 +14,8 @@ const RestaurantListItem = (props) => {
 
 
 	if (restaurant){
-		const selected = props.selectedRestId === restaurant.id.toString() && styles.selected;
-
 		return(
-			<div className={classNames([styles.itemContainer, selected]) }>
+			<div className={classNames([styles.itemContainer,{[styles.selected]: props.selectedRestId === restaurant.id.toString()}]) }>
 				<div className={styles.cuisine}>{CuisineIconsMapping[cuisines[restaurant.cuisine_id]]}</div>
 				<div className={styles.details}>
 					<div className={styles.name} onClick={ handleRestSelection}>{restaurant.name}
