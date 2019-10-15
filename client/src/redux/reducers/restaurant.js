@@ -10,23 +10,7 @@ export default handleActions(
         },
 
         [FETCH_RESTAURANTS]: (state, action) =>{
-
-            let tmp = []
-            let i = 1000;
-            for (let j=0; j<20; j++){
-                tmp.push({
-                    id: i+j,
-                    name : `test rest ${j}`,
-                    cuisine_id: 2,
-                    address: 'test steert',
-                    latitude: 32 +j ,
-                    longitude: 34 + j,
-                    deliverytime: 90,
-                    rating : 3
-
-                })
-            }
-            return { ...state, restaurants: [...tmp,...action.payload], loaded:true };
+            return { ...state, restaurants: action.payload, loaded:true };
         },
 
         [APPLY_REST_FILTER]: (state, action) =>{
