@@ -20,9 +20,6 @@ class FilterBar extends Component{
     }
 }
 
-const mapStateToProps = ({ cuisines }) => {
-    return {cuisines};
-};
-
+const mapStateToProps = ({ cuisines })=> ({ cuisines});
 
 export default connect(mapStateToProps)(FilterBar);
