@@ -12,7 +12,14 @@ class ReviewsList extends Component{
         openModal :false
     };
 
-    modalCloseHandler = ()=> this.setState({openModal:false});
+    modalCloseHandler = ()=> {
+        this.setState({openModal:false},
+            ()=>this.props.getRestaurantReviews(this.props.restId));
+    };
+
+    modalOpenHandler = () => {
+      this.setState({openModal:true})
+    };
 
     componentDidMount() {
         this.props.getRestaurantReviews(this.props.restId);
@@ -25,7 +32,7 @@ class ReviewsList extends Component{
                 <div className={styles.reviewListPane}>
                     <div className={styles.reviewHeader}>
                         <div className={styles.title}>Reviews</div>
-                        <div className={styles.addReview} onClick={()=>this.setState({openModal:true})}>
+                        <div className={styles.addReview} onClick={this.modalOpenHandler}>
                             <div><Icon circular color="teal" name="add"/>Add Review</div>
                             <AddReviewModal restId={this.props.restId} showModal={this.state.openModal}
                                             closeHandler={this.modalCloseHandler}

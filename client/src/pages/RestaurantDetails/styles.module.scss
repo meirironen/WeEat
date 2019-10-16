@@ -50,14 +50,6 @@
       @include fontSize(18px, "rem")
     }
 
-    .deliveryTime{
-
-    }
-
-    .foodCard{
-
-    }
-
     .title{
       @include bold-text();
     }

@@ -3,6 +3,7 @@ import {FILTER_HANDLERS} from "../../utlis/create-filters";
 
 const filtersSelector = state => state.restaurants.filters;
 const restaurantSelector = state => state.restaurants.restaurants;
+const selectedRestaurantSelector = (state, props) => props.restaurantId;
 
 export const filteredRestaurantSelector = createSelector(
     [restaurantSelector,filtersSelector], (restaurants, filters)=>{
@@ -12,3 +13,8 @@ export const filteredRestaurantSelector = createSelector(
         });
         return filteredList;
 });
+
+export const selectRestaurantById = createSelector(
+    [restaurantSelector,selectedRestaurantSelector], (restaurants, restaurantId) =>{
+        return restaurants.filter(rest => rest.id === restaurantId);
+    });

@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {Loader} from "semantic-ui-react";
 
 import ReviewsList from "../../components/ReviewsList";
-import {filteredRestaurantSelector} from "../../redux/selectors/RestaurantSelector";
+import {selectRestaurantById} from "../../redux/selectors/RestaurantSelector";
 import {CuisineIconsMapping} from "../../utlis/constants";
 import {getCuisines} from "../../redux/actions/cuisine";
 import {getRestaurantById} from "../../redux/actions/restaurant";
@@ -13,10 +13,8 @@ import styles from "./styles.module.scss"
 class RestaurantDetails extends Component {
 
   async componentDidMount() {
-    await this.props.getCuisines();
-    if ( this.props.restaurantId){
       await this.props.getRestaurantById(this.props.restaurantId);
-    }
+      await this.props.getCuisines();
   }
 
   renderRestaurantDetails = (restaurant) =>{
@@ -36,19 +34,18 @@ class RestaurantDetails extends Component {
         </div>
 
         <div className={styles.detailsCol}>
-            <div className={styles.deliveryTime}>
+            <div>
               <div className={styles.title}>Delivery time: </div>
               <div> Up to : {deliverytime} minutes</div>
             </div>
 
-            <div className={styles.foodcard}>
+            <div>
               <div className={styles.title}>Food card charge: </div>
               <div>{foodcard ? "Yes" : "No"}</div>
             </div>
         </div>
       </div>
-    );
-  };
+    )};
 
   render(){
     if (this.props.loaded){
@@ -58,7 +55,7 @@ class RestaurantDetails extends Component {
             <div className={styles.restaurantDetailsContainer}>
               {this.renderRestaurantDetails(restaurant)}
             </div>
-            <ReviewsList restId={this.props.restaurantId} />
+            <ReviewsList restId={restaurant.id} />
           </div>
       );
     }
@@ -68,11 +65,13 @@ class RestaurantDetails extends Component {
   }
 }
 
-const mapStateToProps =  (state) => {
+const mapDispatchToProps = {getCuisines, getRestaurantById};
+
+const mapStateToProps =  (state,props) => {
   return {
-    restaurants: filteredRestaurantSelector(state),
+    restaurants: selectRestaurantById(state,props),
     cuisines: state.cuisines,
     loaded: state.restaurants.loaded && state.cuisines.loaded
   };};
 
-export default connect(mapStateToProps, {getCuisines, getRestaurantById})(RestaurantDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(RestaurantDetails);
