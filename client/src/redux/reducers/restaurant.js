@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import {APPLY_REST_FILTER, FETCH_RESTAURANTS, RESET} from '../action-types'
+import {APPLY_REST_FILTER, FETCH_RESTAURANTS, RESET, FETCH_RESTAURANT_BY_ID} from '../action-types'
 
 const INITIAL_STATE = { restaurants : [], filters: {}, loaded: null };
 
@@ -23,6 +23,10 @@ export default handleActions(
             return { ...state,
                 filters: {...state.filters, [action.payload.filterKey] : action.payload.value}
             };
+        },
+
+        [FETCH_RESTAURANT_BY_ID]: (state,action) =>{
+            return {...state, restaurants: [action.payload], filters : {}, loaded:true}
         }
     },
     INITIAL_STATE

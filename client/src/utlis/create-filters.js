@@ -10,7 +10,7 @@ const DELIVERY_FILTERS = DELIVERY_TIME.map(time => ({
     value: time
 }));
 
-const RATING_OPTIONS = Array(3)
+export const RATING_OPTIONS = Array(3)
     .fill()
     .map((item, index) => ({
         text: "⭐".repeat(index + 1),

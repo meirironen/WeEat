@@ -44,4 +44,10 @@
       padding-left: calculateRem(3px, "em");
     }
   }
+  .actions{
+    @extend %flex-row;
+    align-items: center;
+    text-align: center;
+    @include fontSize(24px,"em");
+  }
 }

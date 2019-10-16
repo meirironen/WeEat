@@ -11,3 +11,7 @@ export const APPLY_REST_FILTER = "APPLY_REST_FILTER";
 export const FETCH_CUISINES  = "FETCH_CUISINES";
 export const CREATE_CUISINE  = "CREATE_CUISINE";
 
+
+//Reviews
+export const FETCH_REVIEWS = "FETCH_REVIEWS";
+

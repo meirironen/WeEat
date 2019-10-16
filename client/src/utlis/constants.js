@@ -1,12 +1,12 @@
 export const CuisineIconsMapping = {
-  Japanese: "i",
-  Pizza: "l",
-  Italian: "5",
-  Mexican: "8",
-  Vegan: "$",
-  Hummus: "4",
-  Burgers: "A",
-  Fish: "K",
+  Asian: "J",
+  American: "A",
   Deli: "&",
+  Hummus: "4",
+  Fish: "K",
   Indian: "D",
-};
+  Italian: "5",
+  Japanese: "i",
+  Mexican: "8",
+  Pizza: "l",
+}

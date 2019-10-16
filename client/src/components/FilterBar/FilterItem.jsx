@@ -8,16 +8,14 @@ class FilterItem extends Component{
 
     handleOnChange = (e,data) =>{
         this.props.applyRestaurantFilter({filterKey: this.props.filterKey ,value: data.value});
-    }
+    };
 
     render(){
         const { label, placeholder, options} = this.props;
-
         return (
-
             <div className={styles.filterItem}>
                 <label>{label}</label>
-                <Select placeholder={placeholder} option={options} onChange={this.handleOnChange}/>
+                <Select placeholder={placeholder} options={options} onChange={this.handleOnChange}/>
             </div>
         )
     }

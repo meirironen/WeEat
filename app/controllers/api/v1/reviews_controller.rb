@@ -4,9 +4,9 @@ module Api::V1
 
     # GET /api/v1/reviews
     def index
-      @reviews = Review.all
-
-      json_response(@reviews)
+      restaurant_id = params[:restaurant_id]
+      reviews = Review.where(restaurant_id: restaurant_id)
+      json_response(reviews)
     end
 
     # GET /reviews/1
